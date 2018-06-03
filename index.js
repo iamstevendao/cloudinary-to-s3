@@ -1,10 +1,21 @@
 import rp from 'request-promise';
-import AWS from 'aws-sdk';
+import { upload } from './src/upload';
 
-AWS.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REGION,
-});
-
-const s3 = new AWS.S3();
+rp({
+  uri: 'https://www.bluecross.org.uk/sites/default/files/assets/images/118809lpr.jpg',
+  encoding: null,
+})
+  .then(async (response) => {
+    try {
+      const res = await upload({
+        file: response,
+        fileName: '118809lpr.jpg',
+      });
+      console.log(res);
+    } catch (err) {
+      console.log('err: ', err);
+    }
+  })
+  .catch(error => {
+    console.log('error: ', error)
+  });

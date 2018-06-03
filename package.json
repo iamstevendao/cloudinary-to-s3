@@ -22,6 +22,7 @@
   "homepage": "https://github.com/iamstevendao/cloudinary-to-s3#readme",
   "dependencies": {
     "aws-sdk": "^2.250.1",
+    "cloudinary": "^1.11.0",
     "dotenv": "^6.0.0",
     "request": "^2.87.0",
     "request-promise": "^4.2.2"
